@@ -1,5 +1,3 @@
-
-
 const readlineSync = require('readline-sync');
 
 // Declaración de variables
@@ -14,19 +12,20 @@ metodoPago = "";
 
 // Presentación del chatbot
 console.log("¡Hola! Bienvenido a BotSu, tu destino para un descanso perfecto.");
-nombreCliente = readlineSync.question("¿Cómo te llamas?\n");//Guardar el datos de todos los clientes
+nombreCliente = readlineSync.question("¿Cómo te llamas?\n\n");//Guardar el datos de todos los clientes
 
-console.log("¡Excelente " + nombreCliente + "! ¿Cómo te gustaría comenzar?");
+console.log("¡Excelente " + nombreCliente + "! ¿Cómo te gustaría comenzar?\n");
 
 // Función para mostrar el menú principal
 function mostrarMenuPrincipal() {
     console.log("1. Explorar Colchones");
-    console.log("2. Ver Ofertas");
-    console.log("3. Hablar con un Asesor");
-    console.log("4. Realizar Pedido");
-    console.log("5. Consultas Frecuentes");
-    console.log("6. Salir");
+    // console.log("2. Ver Ofertas");
+    // console.log("3. Hablar con un Asesor");
+    // console.log("4. Realizar Pedido");
+    // console.log("5. Consultas Frecuentes");
+    // console.log("6. Salir");
 }
+
 
 // Función para explorar colchones
 function explorarColchones() {
@@ -38,6 +37,12 @@ function explorarColchones() {
 
     opcionColchones = parseInt(readlineSync.question());
 
+    // Bucle while para validar la opción después de leerla
+    while (![1,2,3,4].includes(opcionColchones)) {//opcionColchones < 1 || opcionColchones > 4
+        console.log("Por favor, ingresa una opción válida (1, 2, 3 o 4).");
+        opcionColchones = parseInt(readlineSync.question("Selecciona una categoría:\n1. Colchones de Espuma\n2. Colchones de Muelles\n3. Colchones Ecológicos\n4. Colchones Premium\n"));
+    }
+  
     switch (opcionColchones) {
         case 1:
             console.log("Colchones de Espuma");
@@ -46,22 +51,28 @@ function explorarColchones() {
             console.log("3. Modelo C - $70 USD");
 
             opcionColchones = parseInt(readlineSync.question());
-
-            if (opcionColchones === 1) {
-				nombreColchon = "Modelo A";
+            // Bucle while para validar la opción después de leerla
+            while (![1,2,3].includes(opcionColchones)) {//opcionColchones < 1 || opcionColchones > 3
+                console.log("Por favor, ingresa una opción válida (1, 2, 3).");
+                opcionColchones = parseInt(readlineSync.question("Selecciona una categoría:\n1. Modelo A \n2 Modelo B \n3 Modelo C\n"));
+                }
+            let nombresColchonesEspuma = ["Modelo A", "Modelo B", "Modelo C"];//Array para registrat nombre de los modelos
+                nombreColchon = nombresColchonesEspuma[opcionColchones - 1];  // Restamos 1 porque los índices del array empiezan en 0
+/*
+            
+                if (opcionColchones === 1) {
+			    	nombreColchon = "Modelo AA";
+			    }
+                else if (opcionColchones === 2) {
+			    	nombreColchon = "Modelo BB";
+			    }
+                else if (opcionColchones === 3){
+			    	nombreColchon = "Modelo CC";
 			}
-            else if (opcionColchones === 2) {
-				nombreColchon = "Modelo B";
-			}
-            else if (opcionColchones === 3){ //ELSE IF PARA TODAS LAS DEMAS
-				nombreColchon = "Modelo C";
-
-			}else{
-				console.log("SELECCIONA UNA OPCION VALIDA")
-			}
-
+                    */
             console.log("Haz seleccionado el modelo " + nombreColchon);
-            console.log("Te comparto el enlace para ver todos los detalles https://www.mercadolibre.com.mx/");
+            console.log("Te comparto el enlace para comprar en la web https://www.mercadolibre.com.mx/");
+            
             break;
 
         case 2:
@@ -70,9 +81,15 @@ function explorarColchones() {
             console.log("2. Modelo E - $60 USD");
             console.log("3. Modelo F - $70 USD");
             opcionColchones = parseInt(readlineSync.question());
-            if (opcionColchones === 1) nombreColchon = "Modelo D";
-            else if (opcionColchones === 2) nombreColchon = "Modelo E";
-            else nombreColchon = "Modelo F";
+        
+            // Bucle while para validar la opción después de Ingresar
+            while (![1,2,3].includes(opcionColchones)) {//opcionColchones < 1 || opcionColchones > 3
+                console.log("Por favor, ingresa una opción válida (1, 2, 3).");
+                opcionColchones = parseInt(readlineSync.question("Selecciona una categoría:\n1. Modelo A \n2 Modelo B \n3 Modelo C\n"));
+                }
+            let nombresColchonesMuelles = ["Modelo D", "Modelo E", "Modelo F"];//Array para registrat nombre de los modelos
+                nombreColchon = nombresColchonesMuelles[opcionColchones - 1];  // Restamos 1 porque los índices del array empiezan en 0            
+           
             console.log("Haz seleccionado el modelo " + nombreColchon);
             console.log("Te comparto el enlace para comprar en la web https://www.mercadolibre.com.mx/");
             break;
@@ -83,11 +100,18 @@ function explorarColchones() {
             console.log("2. Modelo H - $60 USD");
             console.log("3. Modelo I - $70 USD");
             opcionColchones = parseInt(readlineSync.question());
-            if (opcionColchones === 1) nombreColchon = "Modelo G";
-            else if (opcionColchones === 2) nombreColchon = "Modelo H";
-            else nombreColchon = "Modelo I";
+
+            // Bucle while para validar la opción después de Ingresar
+            while (![1,2,3].includes(opcionColchones)) {//opcionColchones < 1 || opcionColchones > 3
+                console.log("Por favor, ingresa una opción válida (1, 2, 3).");
+                opcionColchones = parseInt(readlineSync.question("Selecciona una categoría:\n1. Modelo A \n2 Modelo B \n3 Modelo C\n"));
+                }
+            let nombresColchonesEcologicos = ["Modelo G", "ModNO H", "Modelo I"];//Array para registrat nombre de los modelos
+                nombreColchon = nombresColchonesEcologicos[opcionColchones - 1];  //Restamos 1 los índices del array empiezan  en 0            
+           
             console.log("Haz seleccionado el modelo " + nombreColchon);
             console.log("Te comparto el enlace para comprar en la web https://www.mercadolibre.com.mx/");
+
             break;
 
         case 4:
@@ -96,11 +120,18 @@ function explorarColchones() {
             console.log("2. Modelo K - $60 USD");
             console.log("3. Modelo L - $70 USD");
             opcionColchones = parseInt(readlineSync.question());
-            if (opcionColchones === 1) nombreColchon = "Modelo J";
-            else if (opcionColchones === 2) nombreColchon = "Modelo K";
-            else nombreColchon = "Modelo L";
+
+            // Bucle while para validar la opción después de Ingresar
+            while (![1,2,3].includes(opcionColchones)) {//opcionColchones < 1 || opcionColchones > 3
+                console.log("Por favor, ingresa una opción válida (1, 2, 3).");
+                opcionColchones = parseInt(readlineSync.question("Selecciona una categoría:\n1. Modelo A \n2 Modelo B \n3 Modelo C\n"));
+                }
+            let nombresColchonesPremium = ["Modelo J", "Modelo K", "Modelo L"];//Array para registrat nombre de los modelos
+                nombreColchon = nombresColchonesPremium[opcionColchones - 1];  // Restamos 1 porque los índices del array empiezan en 0            
+           
             console.log("Haz seleccionado el modelo " + nombreColchon);
             console.log("Te comparto el enlace para comprar en la web https://www.mercadolibre.com.mx/");
+
             break;
 
         default:
