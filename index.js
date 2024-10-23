@@ -1,6 +1,7 @@
 const readlineSync = require('readline-sync');
 
 // Declaración de variables
+let nombresClientesNuevos = [];
 let nombreCliente;
 let opcionPrincipal, opcionColchones, opcionTamaño, opcionPago;
 let confirmarCompra, nombreColchon, tamañoColchon, metodoPago;
@@ -10,20 +11,28 @@ nombreColchon = "";
 tamañoColchon = "";
 metodoPago = "";
 
+
+let ingresarNuevoCliente = true;
+//TRUE para ingresar al ciclo y agregar nuevos, FALSE para finalizzar el ciclo
+while (ingresarNuevoCliente) {
+    
+
 // Presentación del chatbot
 console.log("¡Hola! Bienvenido a BotSu, tu destino para un descanso perfecto.");
-nombreCliente = readlineSync.question("¿Cómo te llamas?\n\n");//Guardar el datos de todos los clientes
+nombreCliente = readlineSync.question("¿Cómo te llamas?\n");//Guardar el datos de todos los clientes
+
+nombresClientesNuevos.push(nombreCliente);
 
 console.log("¡Excelente " + nombreCliente + "! ¿Cómo te gustaría comenzar?\n");
 
 // Función para mostrar el menú principal
 function mostrarMenuPrincipal() {
     console.log("1. Explorar Colchones");
-    // console.log("2. Ver Ofertas");
-    // console.log("3. Hablar con un Asesor");
-    // console.log("4. Realizar Pedido");
-    // console.log("5. Consultas Frecuentes");
-    // console.log("6. Salir");
+    console.log("2. Ver Ofertas");
+    console.log("3. Hablar con un Asesor");
+    console.log("4. Realizar Pedido");
+    console.log("5. Consultas Frecuentes");
+    console.log("6. Salir");
 }
 
 
@@ -237,39 +246,21 @@ while (!salir) {
         let continuar = readlineSync.question("¿Deseas volver al menú principal? (si/no)\n");
         if (continuar.toLowerCase() !== "si") {
             salir = true;
-            console.log("¡Gracias por visitar nuestra tienda! Hasta pronto.");
+            console.log("¡Gracias por visitar nuestra tienda! Hasta pronto.\n");
         }
     }
 }
+console.log('\nClientes que han consultado el chat bot');
+console.log(nombresClientesNuevos)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // Validar condicion while para seguir atendiendo otro cliente y almacenar el mobre en el array nombresClientesNuevos = [];
+    let nuevoCliente = readlineSync.question("¿Hay un nuevo cliente? (si/no)\n");
+    if (nuevoCliente.toLowerCase() !== "si") {//si es diferente de si? -> NO entonces es verdadera la sentecia 
+                                              //no es diferente de si? ->SI entonces es falsa la sentencia y finaliza el ciclo while
+        ingresarNuevoCliente = false;
+    }
+}
 
 
 
